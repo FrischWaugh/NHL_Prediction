@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Display IP Address</title>
+  <style>
+    body {
+      background-color: #FFCC00;
+    }
+
+    h1 {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 140px;
+      font-size: 60px;
+      margin: -15px;
+    }
+
+    p {
+      font-family: sans-serif;
+      color: #907400;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+<h1>Voici un site internet de tests de fonctions</h1>
+  
+  
+  
+  <p>Voici Ton adresse IP</p>
+  <h2 id=ipText></h2>
+  <script>
+      fetch("https://ipinfo.io/json")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        document.querySelector("#ipText").innerHTML = myJson.ip;
+      })
+      .catch(function (error) {
+        console.log("Error: " + error);
+      });  
+  </script>
+
+
+  <p>Voici le resultat de la fonction</p>
+
+
+  <p id=myVariable></p>
+
+  <script>
+  let myVariable;
+  myVariable = 'Ceci est un string';
+  document.getElementById("myVariable").innerHTML = myVariable;
+  </script>
+
+    <p>Voici Ta ville</p>
+ 
+  <script>
+
+	var xhr = new XMLHttpRequest();
+	xhr.responseType = "json"; // xhr.response will be parsed into a JSON object
+	xhr.open('GET', "https://ipinfo.io/json", true);
+	xhr.send();
+ 
+	xhr.onreadystatechange = processRequest;
+ 
+	function processRequest(e) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        alert(xhr.response.city); // no parsing needed
+    	}
+	}
+  </script>
+
+</body>
+
+</html>
